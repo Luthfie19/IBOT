@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "IBOT",
+    "el": "IBOT"
+  },
+  "description": {
+    "en": "mobile Robot by:Inorobo",
+    "el": "mobile Robot by:Inorobo"
+  },
+  "author": "Inorobo",
+  "email": "inorobo.rs@gmail.com",
+  "license": "MIT",
+  "isBoard": false,
+  "id": "iBot",
+  "platform": ["win", "mac", "web"],
+  "version": "0.0.1",
+  "asset": {
+    "arduinoC": {
+      "dir": "arduinoC/",
+	  "libraries":["IBOT"],
+      "version": "0.0.1",
+      "board": ["arduinonano", "arduino", "arduinounor3"],
+      "main": "main.ts"
+    }
+  }
+}
