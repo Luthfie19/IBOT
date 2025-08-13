@@ -1,14 +1,14 @@
-# Otto diy Robot - MindPlus Extension (offline mode)
+# IBOT DIY Robot – MindPlus Extension (offline mode)
 
 ![](./arduinoC/_images/featured.png)
 
-Το έργο αυτό είναι είναι extension για την εφαρμογή [Mind+](https://mindplus.cc/) το οποίο "μαζεύει" σε ένα σετ εντολών όλες τις λειτουργίες του κιτ που εναλλακτικά θα απαιτούσαν πολλά πρόσθετα για να λειτουργήσουν. 
+This project is an extension for the Mind+ application that gathers all the functions of the kit into a single set of commands, which would otherwise require multiple add-ons to work. 
 
 ---------------------------------------------------------
 
-## Άλλα διαθέσιμα Mind+ πρόσθετα για κιτ Ρομποτικής Πρωτοβάθμιας
+## Other Available Mind+ Extensions for Primary School Robotics Kits
 
-[Mind+ offline extension για Polytech S1](https://gitlab.com/ale3andro/mindplus_ext_s1)
+[Mind+ offline extension for Polytech S1](https://gitlab.com/ale3andro/mindplus_ext_s1)
 
 [Mind+ offline extension για Polytech R2](https://gitlab.com/ale3andro/mindplus_ext_r2)
 
@@ -16,48 +16,38 @@
 
 ---------------------------------------------------------
 
-## Τι είναι το Robot Otto
+## What is the IBOT Robot
 
-Ο Otto DIY είναι ένα ρομπότ το οποίο εκτυπώνεται σε 3d εκτυπωτή και στη συνέχεια συναρμολογείται. Εκτός από τα πλαστικά μέρη (που εκτυπώνονται), για τη συναρμολόγηση του ρομπότ χρειάζονται:
+The IBOT DIY is a robot that is 3D printed and then assembled. Apart from the plastic parts (printed), the following components are required to assemble the robot:
 
-* 1 x Arduino Nano
+* 1 × Arduino Nano
 
-* 4 x σέρβο κινητήρες (μικρούς τύπου SG90)
+* 2 × small motors (MX1508 type)
 
-* 1 x buzzer και 
+* 1 x buzzer
 
-* 1 x αισθητήρας απόστασης (τύπου HC-SR04)
+* 1 x LED
 
-Περισσότερα [εδώ](https://www.ottodiy.com/)
+* 1 × distance sensor (HC-SR04 type)
 
-O Otto προγραμματίζεται απευθείας από το Arduino IDE αλλά και από την εφαρμογή Otto Blockly, η οποία διατίθεται στην παραπάνω ιστοσελίδα (δωρεάν). Η εφαρμογή για Linux, έχει μείνει μερικές εκδόσεις πίσω σε σχέση με την εφαρμογή για Windows. 
 
-Για τον προγραμματισμό του ρομπότ, έχει αναπτυχθεί η βιβλιοθήκη [OttoDIYLib](https://github.com/OttoDIY/OttoDIYLib).
+IBOT can be programmed directly from the Arduino IDE as well as from the Otto Blockly application, which is available for free on the above website. The Linux version of the application is a few releases behind the Windows version. 
 
-Έχω φτιάξει αυτό το πρόσθετο για Mind+, το οποίο κάνει import την παραπάνω βιβλιοθήκη και επιτρέπει τον προγραμματισμό του ρομπότ μέσα από την εφαρμογή [Mind+](https://mindplus.cc/)
+I created this Mind+ extension, which imports the above library and enables programming the robot directly from the Mind+ application.
 
-## Otto robot pinout
+## IBOT robot pinout
 
 
 | Item | pin |
 |---|---|
-| LeftLeg | D6 |
-| RightLeg |  D5
-| LeftFoot | D10 
-| RightFoot | D9 
-| Buzzer | A3
+| Left 1 | D6 |
+| Right 1 |  D5 |
+| Left 2 | D10 |
+| Right 2 | D9 |
+| LED | A2 |
+| Buzzer | A3 |
 | Distance Sensor : Trigger |  D2 |
 | Distance Sensor : Echo |  D4 |
-
----------------------------------------------------------
-
-## Άλλα διαθέσιμα Mind+ πρόσθετα για κιτ Ρομποτικής Πρωτοβάθμιας
-
-[Mind+ offline extension για Polytech S1](https://gitlab.com/ale3andro/mindplus_ext_s1)
-
-[Mind+ offline extension για Polytech R2](https://gitlab.com/ale3andro/mindplus_ext_r2)
-
-[Mind+ offline extension για Microbit GigoRobot](https://github.com/ale3andro/mindplus_ext_gigorobot)
 
 ---------------------------------------------------------
 
