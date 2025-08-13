@@ -41,13 +41,13 @@ O Otto προγραμματίζεται απευθείας από το Arduino I
 
 | Item | pin |
 |---|---|
-| LeftLeg | D2 |
-| RightLeg |  D3
-| LeftFoot | D4 
-| RightFoot | D5 
-| Buzzer | D13
-| Distance Sensor : Trigger |  D8 |
-| Distance Sensor : Echo |  D9 |
+| LeftLeg | D6 |
+| RightLeg |  D5
+| LeftFoot | D10 
+| RightFoot | D9 
+| Buzzer | A3
+| Distance Sensor : Trigger |  D2 |
+| Distance Sensor : Echo |  D4 |
 
 ---------------------------------------------------------
 
