@@ -30,6 +30,12 @@ class IBOT {
     // Set speed
     void setSpeed(int speedA, int speedB);
 
+    //line follower
+    void setPID(float kp, float ki, float kd);
+    void setLFConfig(int baseSpeed, int maxSpeed);
+    void setError(float errorValue);
+    void runLF();
+
   private:
     int _in1, _in2, _in3, _in4;
 	int _kipas1,_kipas2;
@@ -47,6 +53,10 @@ class IBOT {
 
     void motorKiri(int pwmA, int pwmB);
     void motorKanan(int pwmA, int pwmB);
+
+    float _kp, _ki, _kd;
+    float _error, _lastError, _integral;
+    int _baseSpeed, _maxSpeed;
 };
 
 #endif

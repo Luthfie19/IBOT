@@ -93,6 +93,9 @@ void IBOT::belokKanan()
 // Stop
 void IBOT::stop()
 {
+  motorKiri(_speedA, _speedA);
+  motorKanan(_speedB, _speedB);
+  delay(100);
   motorKiri(0, 0);
   motorKanan(0, 0);
   delay(10);
@@ -203,4 +206,34 @@ bool IBOT::readFlameDigital()
   {
     return false;
   }
+}
+
+void IBOT::setLFConfig(int baseSpeed, int maxSpeed) {
+    _baseSpeed = baseSpeed;
+    _maxSpeed = maxSpeed;
+}
+
+void IBOT::setPID(float kp, float ki, float kd) {
+    _kp = kp;
+    _ki = ki;
+    _kd = kd;
+}
+
+void IBOT::setError(float errorValue) {
+    _error = errorValue;
+}
+
+void IBOT::runLF() {
+    // Rumus PID dari source [cite: 11, 12]
+    _integral += _error;
+    float derivative = _error - _lastError;
+    float correction = (_kp * _error) + (_ki * _integral) + (_kd * derivative);
+    _lastError = _error;
+
+    // Kalkulasi kecepatan motor [cite: 13]
+    int leftSpeed = constrain(_baseSpeed - correction, 0, _maxSpeed);
+    int rightSpeed = constrain(_baseSpeed + correction, 0, _maxSpeed);
+
+    motorKiri(leftSpeed, 0);
+    motorKanan(rightSpeed, 0);
 }

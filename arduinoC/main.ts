@@ -44,6 +44,7 @@ declare var Generator: any;
 
 //% color="#FF4D00" iconWidth=50 iconHeight=40
 namespace IBOT {
+
 	//% block="IBOT init kecepatan kiri [speedA] ||  kecepatan Kanan[speedB]" blockType="command"
 	//% speedA.shadow="range" speedA.params.min=0 speedA.params.max=255 speedA.defl=200
 	//% speedB.shadow="range" speedB.params.min=0 speedB.params.max=255 speedB.defl=200
@@ -58,6 +59,34 @@ namespace IBOT {
 			Generator.addCode(`robot.setSpeed(${Speed1}, ${Speed2});`);
 		}
 	}
+	
+	//% block="Ibot Set PID base Speed [basespeed] || Max Speed [maxspeed]" blockType="command"
+	//% basespeed.shadow="range" basespeed.params.min=0 basespeed.params.max=255 basespeed.defl=150
+	//% maxspeed.shadow="range" maxspeed.params.min=100 maxspeed.params.max=255 maxspeed.defl=255
+
+	export function iBotPIDinit (parameter: any,block:any){
+		let bs1 = parameter.basespeed.code;
+		let ms1 = parameter.maxspeed.code;
+		
+		if (Generator.board === 'arduinonano' || Generator.board === 'arduino'){
+			Generator.addInclude('IBOT', '#include <IBOT.h>');
+			Generator.addObject('robot', 'IBOT', 'robot;');
+			Generator.addSetup("robot.begin", `robot.begin(10,6,9,5);`);
+			Generator.addCode(`robot.setLFConfig(${bs1}, ${ms1});`);
+		}
+	}
+
+	//% block="Atur nilai PID : KP [kp] KI [ki] KD [kd]" blocktype="command"
+	//% kp.shadow="number" kp.defl="10"
+	//% ki.shadow="number" ki.defl="0"
+	//% kd.shadow="number" kd.defl="5"
+	export function PID (parameter: any, block: any){
+		let kp = parameter.kp.code;
+   		let ki = parameter.ki.code;
+    	let kd = parameter.kd.code;
+    	Generator.addCode(`robot.setPID(${kp}, ${ki}, ${kd});`);
+	}
+
 	//% block="Gerak Robot [direction] Selama [delay] Detik" blockType="command"
 	//% direction.shadow="dropdown" direction.options="MOVE_DIRECTION" direction.defl="Maju"
 	//% delay.shadow="number" delay.defl="1"
@@ -132,6 +161,24 @@ namespace IBOT {
 			Generator.addCode(`robot.readFlameDigital()`);
 		}
 	}
+
+	//% block="Set Nilai Error [err] (+) untuk kiri (-) untuk kanan" blockType="command"
+	//% err.defl=0
+	export function setErrorValue(parameter: any, block: any) {
+		let err = parameter.err.code;
+    
+		// Teknik ampuh: Menghapus semua tanda kutip agar menjadi angka murni di C++
+		// Ini memungkinkan nilai negatif seperti -2 atau -1.5 terbaca sebagai float
+		let cleanErr = err.replace(/\"/g, "");
+		Generator.addCode(`robot.setError(${cleanErr});`);
+	}
+
+	//% block="Jalankan Perhitungan PID" blockType="command"
+	export function runCarLF(parameter: any, block: any) {
+		Generator.addCode(`robot.runLF();`);
+	}
+
+
 	//% block="Selama [delay1] detik" blockType="command"
 	//% delay1.shadow="number" delay1.defl="1"
 	export function wait(parameter: any, block: any) {
@@ -140,4 +187,6 @@ namespace IBOT {
 
 		Generator.addCode(`delay(${delay2});`);
 	}
+
+
 }
